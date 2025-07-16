@@ -1,0 +1,145 @@
+/* ========================================
+   REDISEÑO MODERNO - SISTEMA NEUTRO
+   ======================================== */
+
+/* === APP.CSS === */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #3b82f6;
+  transition: color 0.3s ease;
+}
+
+.App-link:hover {
+  color: #60a5fa;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* === CARD.CSS === */
+.card-key {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.025em;
+}
+
+.card-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* === DASHBOARD.PAGE.CSS === */
+.tw-about {
+  margin: 0;
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+}
+
+.tw-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tw-sub-heading {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.mw-heading {
+  color: #1e293b;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mw-sub-heading {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.bw-heading {
+  color: #1e293b;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.bw-stats-card {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+}
+
+.bw-stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.bw-stats-card-body {
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bw-stats-card-count {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: none;
+  border-radius: 12px;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.bw-stats-card-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #374151;
+  margin: 0;
+}

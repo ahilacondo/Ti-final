@@ -1,0 +1,94 @@
+.wrapper {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.tw-heading1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.tw-features {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.tw-features span {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.tw-brand {
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+  padding: 1rem 0;
+}
+
+.tw-seller {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.tw-transfer-wrapper {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.tw-transfer-wrapper input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.tw-transfer-wrapper input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.tw-transfer-wrapper button {
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tw-transfer-wrapper button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.tw-transfer-wrapper button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
