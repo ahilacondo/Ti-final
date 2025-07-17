@@ -1,126 +1,196 @@
-# Authenticity in Food Supply Chain Using Blockchain
-![Solidity](https://img.shields.io/badge/Solidity-000000?style=for-the-badge&logo=solidity&logoColor=white)
-![Ethereum](https://img.shields.io/badge/Ethereum-white?style=for-the-badge&logo=ethereum&logoColor=blue)
-![Javascript](https://img.shields.io/badge/Javascript-ffff00?&style=for-the-badge&logo=react&logoColor=black) 
-![React](https://img.shields.io/badge/React-0095D5?&style=for-the-badge&logo=react&logoColor=white) 
+# Sistema de Trazabilidad Blockchain - Cadena de Suministro
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/lakshya-20/supply-chain?style=for-the-badge)
-[![GitHub last commit](https://img.shields.io/github/last-commit/lakshya-20/supply-chain?style=for-the-badge)](https://github.com/lakshya-20/supply-chain/commits)
+## CLONACIÓN DEL PROYECTO
 
-
-## Project description
-
-### Introduction
-The food supply chain is a complex but necessary food production arrangement needed by the global community to maintain sustainability and food security. The supply chain has been extended geographically involving many more stakeholders, making the supply chain longer and complicated and thus involving many challenges.
-
-Some of the challenges that are commonly faced in food supply chains are
-* Lack of traceability and communication.
-* Rising supply chain costs.
-* Supply of fraudulent food products.
-* Failure in monitoring warehouses.
-
-### Objectives
-The project aims to design a decentralized food supply chain to trace products from end to end and provide a smart and reliable way of providing information to the customers. <br/>
-**Features**
-* Platform to trace food products worldwide.
-* Restricting duplicate and unauthentic products.
-* Proper food distribution.
-* Reducing the supply chain costs.
-
-### System Architecture
-The application follows the layered architecture where components which similar functionality are organized into horizontal layers and each layer has a specific role within the application.
-<br/>
-The system architecture consists of three layers:
-- Application Layer
-- Blockchain Layer
-- Infrastructure Layer
-<p align="center">
-  <img src="https://res.cloudinary.com/dstmsi8qv/image/upload/v1652867380/Supply%20Chain/Github%20Readme/layer_arch_s5avzr.png" width="500px"/>
-</p>
-
-### Methodology
-The project is build on three core modules: Traceability System, Trading Mechanism and Reputation System.
-1. **Traceability System**
-    * Each product is marked with unique serial code which is onwed by an externally owned account on Ethereum.
-    * Every product transaction is recorded and stored in smart contract and linked with product's serial code.
-    * This comes with Access Control Strategy which allows only authentic users to make specific transactions.
-2. **Trading Mechanism**
-    <p align="center">
-      <img src="https://res.cloudinary.com/dstmsi8qv/image/upload/v1652867380/Supply%20Chain/Github%20Readme/trading_mechanism_icqvdz.png" width="500px"/>
-    </p>
-
-    * The process of delivering goods from one entity to another is tracked and recorded on the blockchain.
-    * The consumers first register themselves on the system and request to purchase the product with a serial number.
-    * The purchase request is sent to the product owner who updates the product ownership with the new owner.
-    * This process ensures that retailers do not sell products with duplicate serial codes.
-3. **Reputation System**
-    <p align="center">
-      <img src="https://res.cloudinary.com/dstmsi8qv/image/upload/v1652867379/Supply%20Chain/Github%20Readme/reputation_system_wumzif.png" width="500px"/>
-    </p>
-
-    * This system adds a layer of trust between customers and retailers.
-    * This mechanism allows only actual customers of the product to post feedback about the product.
-    * The reviews on the blockchain are immutable which does not allow any merchant or retailer to delete or update bad reviews to increase their overall ratings. 
-    * And in this way this mechanism maintains the complete integrity of the retailer and let the customer know about the seller before making the transaction.
-
-
-## Development Setup
-### Requirements
-- [NodeJS](https://nodejs.org/en) >= 10.16 and [npm](https://www.npmjs.com/) >= 5.6 installed.
-- [Git](https://git-scm.com/) installed in the system.
-- [Truffle](https://www.trufflesuite.com/truffle), which can be installed globally with `npm install -g truffle`
-- [Metamask](https://metamask.io) extension added to the browser.
-- [Ganache](https://trufflesuite.com/ganache/) development network.
-
-**Clone the repository**
+Primero clonamos el proyecto usando el siguiente comando: 
 ```bash
-git clone https://github.com/lakshya-20/supply-chain
+git clone https://github.com/ahilacondo/Ti-final.git
 ```
 
-### Setting Up Truffle Project
-Smart contracts or blockchain codes are necessary config files for developing, testing and deploying application business logic are present inside `src/Smart-Contract` directory. 
-
-**Checkout smart contracts directory**
+Luego navegamos al directorio del proyecto: 
+```bash
+cd Ti-final
 ```
+
+## REQUISITOS PREVIOS
+
+Antes de proceder con la instalación, asegúrese de tener instalado:
+- Node.js
+- Git 
+- Un navegador web moderno (Chrome, Firefox, Edge)
+
+Para verificar las versiones instaladas: 
+```bash
+node --version 
+npm --version 
+git --version
+```
+
+## INSTALACIÓN DE DEPENDENCIAS GLOBALES
+
+Instale Truffle y Ganache CLI globalmente:
+```bash
+npm install -g truffle
+npm install -g ganache-cli
+```
+
+Verifique las instalaciones:
+```bash
+truffle version
+ganache-cli --version
+```
+
+## CONFIGURACIÓN DE METAMASK
+
+Nos dirigimos a **[Instalar extensión](https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)** y la instalamos.
+
+Una vez instalado nos dirige a crear una cuenta
+
+Seleccionamos "Crear un nuevo monedero"
+
+Creamos una contraseña, se recomienda "proyectofinal"
+
+Después proporciona una frase secreta, la guardamos
+
+Nos redirige a un panel de control de la extensión, se recomienda no cerrarla
+
+Crearemos un red nueva, para ello nos dirigimos a:
+
+![Configurar Red](src/Assests/Images/1.png)
+![Configurar Red](src/Assests/Images/2.png)
+
+En nombre de red colocamos:
+**Localhost 8545**
+
+En URL RPC seleccionamos agregar y colocamos:
+**http://127.0.0.1:8545**
+
+En identificar de cadena colocamos:
+**1337**
+
+Y en símbolo de moneda colocamos:
+**ETH**
+
+![Red Creada](src/Assests/Images/3.png)
+
+Una vez creada volvemos a dirigirnos a:
+
+![Seleccionar Red](src/Assests/Images/4.png)
+
+Y seleccionamos la que acabamos de crear Localhost 8545
+
+## CONFIGURACIÓN DEL BLOCKCHAIN LOCAL
+
+Ejecute Ganache: 
+```bash
+ganache-cli -p 8545
+```
+
+Mantenga esta terminal abierta durante todo el proceso de desarrollo.
+
+Es recomendable guardar las Private Keys que aparecen en consola por ejemplo:
+
+![Private Keys](src/Assests/Images/5.png)
+
+## CONFIGURACIÓN DE SMART CONTRACTS
+
+En una nueva terminal, navegue al directorio de contratos inteligentes: 
+```bash
 cd src/Smart-Contract
 ```
-**Install Truffle**
-```
-npm install -g truffle
-```
-**Compile Smart Contracts**
-```
-truffle compile
-```
-**Deploy Smart Contract on Ganache's development Network**
-```
-truffle migrate --reset
-```
-**Run Test Coverage**
-```
-truffle test
-```
 
-### Setting up Client Application
-
-**Create `.env` file to setup environment variables**
-```
-REACT_APP_NFT_STORAGE_APIKEY=<https://nft.storage APIKEY>
-```
-
-**Install Dependencies**
-```
+Instale las dependencias: 
+```bash
 npm install
 ```
-**Start Client**
+
+Compile los contratos: 
+```bash
+truffle compile
 ```
+
+Despliegue los contratos en la red local:
+```bash
+truffle migrate --reset --network development
+```
+
+## INSTALACIÓN DEL FRONTEND
+
+Regrese al directorio raíz del proyecto:
+```bash
+cd ../..
+```
+
+Instale las dependencias del frontend:
+```bash
+npm install
+```
+
+## EJECUCIÓN DE LA APLICACIÓN
+
+Inicie la aplicación React: 
+```bash
 npm start
 ```
-## Contributing
-1. Fork it
-2. Create your feature branch `(git checkout -b my-new-feature)`
-3. Commit your changes `(git commit -m 'Add some feature')`
-4. In case of multiple commits squash them. You can find guide here: [how to squash commits](https://medium.com/@slamflipstrom/a-beginners-guide-to-squashing-commits-with-git-rebase-8185cf6e62ec)
-4. Run the tests with `(npm run test)` and make sure all tests are passed.
-5. Push your branch `(git push origin my-new-feature)`
-6. Create a new Pull Request, following the template
+
+La aplicación se abrirá automáticamente en http://localhost:3000
+
+Debería aparecer algo similar:
+
+![Aplicación Inicial](src/Assests/Images/6.png)
+
+Nos dirigimos a extensiones
+
+![Extensiones](src/Assests/Images/7.png)
+
+Nos dirigimos a account para añadir una cuenta:
+
+![Añadir Cuenta](src/Assests/Images/8.png)
+
+De las Private Keys que guardamos antes seleccionamos la primera (0) y añadimos:
+
+![Importar Cuenta](src/Assests/Images/9.png)
+
+Actualicemos http://localhost:3000 seguramente les pedirá conectar la cuenta, se coloca aceptar. En caso siga saliendo error no olvidar de cambiar de red:
+
+![Conectar Cuenta](src/Assests/Images/10.png)
+
+## CONFIGURACIÓN INICIAL DE DATOS
+
+Para cargar datos de prueba tenga en cuenta lo descrito en el PASO 10
+
+En otra consola ejecute:
+```bash
+cd src/Smart-Contract
+```
+
+Para los datos:
+```bash
+truffle exec Scripts/setup-app.js --network development
+```
+
+Esto creará usuarios de ejemplo, productos y transacciones para probar la funcionalidad.
+
+## CUENTAS DE ACCESO
+
+Las cuentas disponibles son las Private Keys que guardamos:
+
+![Cuentas Disponibles](src/Assests/Images/5.png)
+
+Por defecto la cuenta (0) es el administrador (siempre), pero al crear datos ficticios en el PASO 9 las demás cuentas se registrarán de manera automática, sin posibilidad de registrar alguna de estas cuenta como uno desee.
+
+En caso ya se haya ejecutado los datos de prueba las cuentas se asignaron de la siguiente forma:
+- **(0) Admin**
+- **(1) Farmer**
+- **(2) Farmer**
+- **(3) Manufacturer**
+- **(4) Manufacturer**
+- **(5) Stakeholder**
+- **(6) Stakeholder**
+- **(7) Stakeholder**
+- **(8) Stakeholder**
+- **(9) Stakeholder**
+
+Para acceder a una cuenta simplemente se debe añadir la cuenta como en el PASO 8, usando la Private Keys correspondiente.
+
+![Sistema Funcionando](src/Assests/Images/sistema-funcionando.png)
