@@ -26,15 +26,15 @@ module.exports = async (callback) => {
   const consumer2 = accounts[9];
 
   await stakeholderContract.register("Admin", "Internet", "admin", { from: admin });
-  await farmerContract.registerFarmer("Farmer 1", "West India", "farmer", ["Milk", "Cocoa", "Sugar", "Apple", "Banana"], { from: farmer1 });
-  await farmerContract.registerFarmer("Farmer 2", "North India", "farmer", ["Rice", "Cocoa", "Wheat", "Tomato", "Sugar"], { from: farmer2 });
-  await manufacturerContract.register("Cadbury", "Uxbridge, United Kingdom", "manufacturer", { from: manufacturer1 });
-  await manufacturerContract.register("Nestle", "Vevey, Switzerland", "manufacturer", { from: manufacturer2 });
-  await stakeholderContract.register("Distributer", "New Delhi, India", "distributer", { from: distributer });
-  await stakeholderContract.register("Big Mart", "Greater Noida, India", "retailer", { from: retailer1 });
-  await stakeholderContract.register("Annapurna", "Greater Noida, India", "retailer", { from: retailer2 });
-  await stakeholderContract.register("Mohan", "Greater Noida, India", "consumer", { from: consumer1 });
-  await stakeholderContract.register("Sohan", "Greater Noida, India", "consumer", { from: consumer2 });
+  await farmerContract.registerFarmer("Juan Quispe", "Valle del Colca, Arequipa", "farmer", ["Papa", "Maíz", "Quinua", "Ají", "Anís"], { from: farmer1 });
+  await farmerContract.registerFarmer("Rosa Mamani", "Majes, Arequipa", "farmer", ["Leche", "Alpaca", "Trigo", "Cebada", "Tomate"], { from: farmer2 });
+  await manufacturerContract.register("La Ibérica", "Uxbridge, Arequipa, Perú", "manufacturer", { from: manufacturer1 });
+  await manufacturerContract.register("Gloria", "Vevey, Majes, Arequipa", "manufacturer", { from: manufacturer2 });
+  await stakeholderContract.register("Distribuidora Arequipa", "Cercado, Arequipa", "distributer", { from: distributer });
+  await stakeholderContract.register("Mercado San Camilo", "José Luis Bustamante y Rivero, Arequipa", "retailer", { from: retailer1 });
+  await stakeholderContract.register("Mercado Avelino", "José Luis Bustamante y Rivero, Arequipa", "retailer", { from: retailer2 });
+  await stakeholderContract.register("Pedro Huamani", "José Luis Bustamante y Rivero, Arequipa", "consumer", { from: consumer1 });
+  await stakeholderContract.register("Lucía Nina", "José Luis Bustamante y Rivero, Arequipa", "consumer", { from: consumer2 });
 
   console.log(await farmerContract.getFarmer(farmer1, { from: farmer1 }));
   console.log(await farmerContract.getFarmer(farmer2, { from: farmer2 }));
@@ -45,13 +45,13 @@ module.exports = async (callback) => {
   console.log(await stakeholderContract.get(retailer2, { from: retailer2 }));
   console.log(await stakeholderContract.get(consumer1, { from: consumer1 }));
   console.log(await stakeholderContract.get(consumer2, { from: consumer2 }));
-  console.log(await farmerContract.getRawProductFarmers("Cocoa", { from: farmer1 }));
+  console.log(await farmerContract.getRawProductFarmers("Papa", { from: farmer1 }));
   
   await farmerContract.verify(farmer2, { from: admin });
   console.log(await farmerContract.isVerified(farmer2, { from: farmer2 }));
 
   //1st manufacturer
-  await manufacturerContract.addRawProduct("Cocoa", [
+  await manufacturerContract.addRawProduct("Papa", [
     {
       id: farmer1,
       isVerified: await farmerContract.isVerified(farmer1, { from: farmer1 })
@@ -61,19 +61,19 @@ module.exports = async (callback) => {
       isVerified: await farmerContract.isVerified(farmer2, { from: farmer2 })
     }
   ], { from: manufacturer1 });
-  await manufacturerContract.addRawProduct("Milk", [
+  await manufacturerContract.addRawProduct("Leche", [
     {
       id: farmer1,
       isVerified: await farmerContract.isVerified(farmer1, { from: farmer1 })
     },
   ], { from: manufacturer1 });
-  await manufacturerContract.addRawProduct("Wheat", [
+  await manufacturerContract.addRawProduct("Trigo", [
     {
       id: farmer2,
       isVerified: await farmerContract.isVerified(farmer2, { from: farmer2 })
     },
   ], { from: manufacturer1 });
-  await manufacturerContract.addRawProduct("Sugar", [
+  await manufacturerContract.addRawProduct("Maíz", [
     {
       id: farmer1,
       isVerified: await farmerContract.isVerified(farmer1, { from: farmer1 })
@@ -83,7 +83,7 @@ module.exports = async (callback) => {
       isVerified: await farmerContract.isVerified(farmer2, { from: farmer2 })
     }
   ], { from: manufacturer1 });
-  await manufacturerContract.addRawProduct("Banana", [
+  await manufacturerContract.addRawProduct("Ají", [
     {
       id: farmer1,
       isVerified: await farmerContract.isVerified(farmer1, { from: farmer1 })
@@ -91,25 +91,25 @@ module.exports = async (callback) => {
   ], { from: manufacturer1 });
 
   //2nd Manufacturer
-  await manufacturerContract.addRawProduct("Cocoa", [
+  await manufacturerContract.addRawProduct("Papa", [
     {
       id: farmer2,
       isVerified: await farmerContract.isVerified(farmer2, { from: farmer2 })
     },
   ], { from: manufacturer2 });
-  await manufacturerContract.addRawProduct("Apple", [
+  await manufacturerContract.addRawProduct("Quinua", [
     {
       id: farmer1,
       isVerified: await farmerContract.isVerified(farmer1, { from: farmer1 })
     },
   ], { from: manufacturer2 });
-  await manufacturerContract.addRawProduct("Rice", [
+  await manufacturerContract.addRawProduct("Cebada", [
     {
       id: farmer2,
       isVerified: await farmerContract.isVerified(farmer2, { from: farmer2 })
     },
   ], { from: manufacturer2 });
-  await manufacturerContract.addRawProduct("Tomato", [
+  await manufacturerContract.addRawProduct("Tomate", [
     {
       id: farmer2,
       isVerified: await farmerContract.isVerified(farmer2, { from: farmer2 })
@@ -128,19 +128,19 @@ module.exports = async (callback) => {
 
   await productContract.add(
     12091, 
-    "Dairy Milk", 
+    "Chocolate La Ibérica", 
     [
       {
-        name: "Milk",
-        isVerified: manufacturer1RawProductsMap["Milk"]
+        name: "Leche",
+        isVerified: manufacturer1RawProductsMap["Leche"]
       },
       {
-        name: "Sugar",
-        isVerified: manufacturer1RawProductsMap["Sugar"]
+        name: "Maíz",
+        isVerified: manufacturer1RawProductsMap["Maíz"]
       },
       {
-        name: "Wheat",
-        isVerified: manufacturer1RawProductsMap["Wheat"]
+        name: "Trigo",
+        isVerified: manufacturer1RawProductsMap["Trigo"]
       }
     ],
     "https://res.cloudinary.com/dstmsi8qv/image/upload/v1652423804/Supply%20Chain/Product%20images/dairy_milk_cadbury_k5ihc3.jpg",
@@ -150,19 +150,19 @@ module.exports = async (callback) => {
 
   await productContract.add(
     12092, 
-    "5 Star Chocolate", 
+    "Turrón de Arequipa", 
     [
       {
-        name: "Milk",
-        isVerified: manufacturer1RawProductsMap["Milk"]
+        name: "Leche",
+        isVerified: manufacturer1RawProductsMap["Leche"]
       },
       {
-        name: "Sugar",
-        isVerified: manufacturer1RawProductsMap["Sugar"]
+        name: "Maíz",
+        isVerified: manufacturer1RawProductsMap["Maíz"]
       },
       {
-        name: "Wheat",
-        isVerified: manufacturer1RawProductsMap["Wheat"]
+        name: "Trigo",
+        isVerified: manufacturer1RawProductsMap["Trigo"]
       }
     ],
     "https://res.cloudinary.com/dstmsi8qv/image/upload/v1652423804/Supply%20Chain/Product%20images/5star_cadbury_emfynn.webp",
@@ -172,23 +172,23 @@ module.exports = async (callback) => {
 
   await productContract.add(
     12093, 
-    "Banana Cake", 
+    "Queque de Quinua", 
     [
       {
-        name: "Milk",
-        isVerified: manufacturer1RawProductsMap["Milk"]
+        name: "Leche",
+        isVerified: manufacturer1RawProductsMap["Leche"]
       },
       {
-        name: "Sugar",
-        isVerified: manufacturer1RawProductsMap["Sugar"]
+        name: "Maíz",
+        isVerified: manufacturer1RawProductsMap["Maíz"]
       },
       {
-        name: "Wheat",
-        isVerified: manufacturer1RawProductsMap["Wheat"]
+        name: "Trigo",
+        isVerified: manufacturer1RawProductsMap["Trigo"]
       },
       {
-        name: "Banana",
-        isVerified: manufacturer1RawProductsMap["Banana"]
+        name: "Ají",
+        isVerified: manufacturer1RawProductsMap["Ají"]
       }
     ],
     "https://res.cloudinary.com/dstmsi8qv/image/upload/v1652423804/Supply%20Chain/Product%20images/cake_cadbury_tw16tw.jpg",
@@ -209,19 +209,19 @@ module.exports = async (callback) => {
 
   await productContract.add(
     22091, 
-    "Munch Chocolate", 
+    "Queso Majes", 
     [
       {
-        name: "Cocoa",
-        isVerified: manufacturer2RawProductsMap["Milk"]
+        name: "Papa",
+        isVerified: manufacturer2RawProductsMap["Leche"]
       },
       {
-        name: "Sugar",
-        isVerified: manufacturer2RawProductsMap["Sugar"]
+        name: "Maíz",
+        isVerified: manufacturer2RawProductsMap["Maíz"]
       },
       {
-        name: "Wheat",
-        isVerified: manufacturer2RawProductsMap["Wheat"]
+        name: "Trigo",
+        isVerified: manufacturer2RawProductsMap["Trigo"]
       }
     ],
     "https://res.cloudinary.com/dstmsi8qv/image/upload/v1652423805/Supply%20Chain/Product%20images/munch_nestle_lrjcal.jpg",
@@ -231,15 +231,15 @@ module.exports = async (callback) => {
 
   await productContract.add(
     22092, 
-    "Tomato Sauce", 
+    "Ají de Huacatay", 
     [
       {
-        name: "Tomato",
-        isVerified: manufacturer2RawProductsMap["Tomato"]
+        name: "Tomate",
+        isVerified: manufacturer2RawProductsMap["Tomate"]
       },
       {
-        name: "Sugar",
-        isVerified: manufacturer2RawProductsMap["Sugar"]
+        name: "Maíz",
+        isVerified: manufacturer2RawProductsMap["Maíz"]
       },
     ],
     "https://res.cloudinary.com/dstmsi8qv/image/upload/v1652423805/Supply%20Chain/Product%20images/tomato_sauce_nestle_w1vsqg.jpg",
@@ -305,3 +305,4 @@ module.exports = async (callback) => {
 
   callback();
 }
+
