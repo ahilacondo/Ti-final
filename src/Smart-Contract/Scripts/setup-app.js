@@ -248,49 +248,49 @@ module.exports = async (callback) => {
   await manufacturerContract.launchProduct(22092, {from: manufacturer2});
 
 
-  await productContract.transfer(distributer, 12091, {from: manufacturer1});
-  await productContract.addReview(12091, 70, "Good product", {from: distributer});
-  await productContract.transfer(retailer1, 12091, {from: distributer});
-  await productContract.addReview(12091, 90, "Value for money", {from: retailer1});
-  await productContract.transfer(consumer1, 12091, {from: retailer1});
-  await productContract.addReview(12091, 60, "Useful", {from: consumer1});
-  console.log(await productContract.get(12091, {from: consumer1}));
-
+  await productContract.transfer(distributer, 12091, {from: manufacturer1}); // El fabricante 1 transfiere al distribuidor
+  await productContract.addReview(12091, 70, "Buen producto", {from: distributer}); // El distribuidor deja una reseña
+  await productContract.transfer(retailer1, 12091, {from: distributer}); // El distribuidor transfiere al minorista 1
+  await productContract.addReview(12091, 90, "Buena relación calidad-precio", {from: retailer1}); // Reseña del minorista
+  await productContract.transfer(consumer1, 12091, {from: retailer1}); // El minorista transfiere al consumidor 1
+  await productContract.addReview(12091, 60, "Útil", {from: consumer1}); // Reseña del consumidor
+  console.log(await productContract.get(12091, {from: consumer1})); // Muestra los detalles del producto 12091
+  
   await productContract.transfer(distributer, 12092, {from: manufacturer1});
-  await productContract.addReview(12092, 80, "Good product", {from: distributer});
+  await productContract.addReview(12092, 80, "Buen producto", {from: distributer});
   await productContract.transfer(retailer1, 12092, {from: distributer});
-  await productContract.addReview(12092, 90, "Value for money", {from: retailer1});
+  await productContract.addReview(12092, 90, "Buena relación calidad-precio", {from: retailer1});
   await productContract.transfer(consumer2, 12092, {from: retailer1});
-  await productContract.addReview(12092, 100, "Good taste", {from: consumer2});
+  await productContract.addReview(12092, 100, "Buen sabor", {from: consumer2});
   console.log(await productContract.get(12092, {from: consumer2}));
-
+  
   await productContract.transfer(distributer, 12093, {from: manufacturer1});
-  await productContract.addReview(12093, 70, "Good product", {from: distributer});
+  await productContract.addReview(12093, 70, "Buen producto", {from: distributer});
   console.log(await productContract.get(12093, {from: consumer1}));
-
+  
   await productContract.transfer(distributer, 22091, {from: manufacturer2});
-  await productContract.addReview(22091, 70, "Good product", {from: distributer});
+  await productContract.addReview(22091, 70, "Buen producto", {from: distributer});
   await productContract.transfer(retailer2, 22091, {from: distributer});
-  await productContract.addReview(22091, 90, "Value for money", {from: retailer2});
+  await productContract.addReview(22091, 90, "Buena relación calidad-precio", {from: retailer2});
   await productContract.transfer(consumer2, 22091, {from: retailer2});
-  await productContract.addReview(22091, 60, "Useful", {from: consumer2});
+  await productContract.addReview(22091, 60, "Útil", {from: consumer2});
   console.log(await productContract.get(22091, {from: consumer2}));
-
+  
   await productContract.transfer(distributer, 22092, {from: manufacturer2});
-  await productContract.addReview(22092, 40, "Too Expensive", {from: distributer});
+  await productContract.addReview(22092, 40, "Demasiado caro", {from: distributer});
   await productContract.transfer(retailer2, 22092, {from: distributer});
-  await productContract.addReview(22092, 90, "Tasty", {from: retailer2});
+  await productContract.addReview(22092, 90, "Sabroso", {from: retailer2});
   await productContract.transfer(consumer1, 22092, {from: retailer2});
-  await productContract.addReview(22092, 60, "Useful", {from: consumer1});
+  await productContract.addReview(22092, 60, "Útil", {from: consumer1});
   console.log(await productContract.get(22092, {from: consumer1}));
-
-  console.log("Stats: ")
+  
+  console.log("Estadísticas: ");
   var count = await productContract.getProductsCount({from: consumer1});
-  console.log("Products: " + count.words[0]);
+  console.log("Productos: " + count.words[0]);
   count = await productContract.getTransactionsCount({from: consumer2});
-  console.log("Transactions: " + count.words[0]);
+  console.log("Transacciones: " + count.words[0]);
   count = await productContract.getReviewsCount({from: consumer2});
-  console.log("Reviews: " + count.words[0]);
+  console.log("Reseñas: " + count.words[0]);
 
   console.log(await mainContract.getRole(admin));
   console.log(await mainContract.getRole(farmer1));
